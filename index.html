@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workflow Hungary Kft.</title>
+  <meta id="metaDesc" name="description" content="Workflow Hungary Kft. – magyar tulajdonú operációs partner 2022 óta: mikromobilitás, ételkiszállítás, városi logisztika és saját márkánk, a PODD.">
+  <link rel="canonical" href="https://wfhungary.hu/">
+  <meta property="og:title" content="Workflow Hungary Kft.">
+  <meta property="og:description" content="Operációs partner és a PODD privát edzőtermek.">
+  <meta property="og:url" content="https://wfhungary.hu/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://wfhungary.hu/images/workflow-logo.png">
+  <meta name="theme-color" content="#4660AB">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Arculat: Montserrat + Futura PT; a Futura PT nem ingyenes webfont, helyette a hozzá nagyon hasonló Jost -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Arculati színek: elsődleges #4660AB, #717171; másodlagos #000000, #FFFFFF */
+      --blue: #4660AB;
+      --blue-deep: #1c2a57;
+      --blue-hover: #3a5296;
+      --gray: #717171;
+      --ink: #000000;
+      --paper: #ffffff;
+      --mist: #f3f4f8;
+      --line: #dfe2ea;
+      --petrol: #014347;
+      --max: 1200px;
+      --gutter: clamp(20px, 4vw, 40px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; }
+    a { color: var(--blue); }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    h1, h2, h3 { margin: 0; letter-spacing: -.025em; line-height: 1.08; }
+    p { margin: 0; }
+
+    /* Fejléc */
+    header {
+      position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92);
+      backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo img { display: block; height: 38px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    #menu { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; }
+    #menu a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; }
+    #menu a:hover { color: var(--blue); }
+    .lang { display: inline-flex; background: var(--mist); border-radius: 99px; padding: 3px; }
+    .lang button {
+      font: 600 13px/1.2 "Montserrat", sans-serif; letter-spacing: .03em; color: var(--gray);
+      background: none; border: 0; border-radius: 99px; padding: 7px 12px; cursor: pointer;
+    }
+    .lang button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+    .menu-btn { display: none; background: none; border: 0; padding: 10px 6px; cursor: pointer; }
+    .menu-btn span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px 0; border-radius: 2px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px;
+      font-weight: 600; font-size: 15px; text-decoration: none; border: 1.5px solid transparent;
+      transition: background-color .15s, color .15s, border-color .15s;
+    }
+    .btn-light { background: #fff; color: var(--blue-deep); }
+    .btn-light:hover { background: #e7ebf7; }
+    .btn-outline { border-color: rgba(255,255,255,.55); color: #fff; }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+
+    /* Hero – a fotó kék duotónusban, rajta a logó W + nyakkendő formája */
+    .hero {
+      position: relative; overflow: hidden; color: #fff; isolation: isolate;
+      min-height: min(88vh, 860px); display: flex; align-items: flex-end;
+      background: radial-gradient(120% 90% at 85% 10%, #5a74c0 0%, var(--blue) 38%, #2e4385 100%);
+    }
+    /* Arculati minta (a Workflow kézikönyv háttérmintája) */
+    .hero-pattern { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgba(36,52,104,.55) 0%, rgba(36,52,104,0) 60%);
+    }
+    .hero-mark {
+      position: absolute; z-index: -1; right: -6vw; bottom: -12vh; height: 112%; width: auto;
+      pointer-events: none;
+    }
+    .hero-mark .tie { animation: tie-drop 1.1s .25s cubic-bezier(.2,.8,.2,1) both; }
+    .hero-mark .stroke { animation: fade-in 1s .1s ease-out both; }
+    @keyframes tie-drop { from { transform: translateY(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    .hero-inner { padding-top: 140px; padding-bottom: clamp(56px, 10vh, 110px); width: 100%; }
+    .hero-kicker { font-family: "Jost", "Futura PT", Futura, sans-serif; font-weight: 500; font-size: 18px; color: rgba(255,255,255,.75); margin-bottom: 22px; }
+    .hero h1 { font-size: clamp(42px, 7.2vw, 100px); font-weight: 800; letter-spacing: -.045em; line-height: .98; max-width: 13ch; }
+    .hero-lead { font-size: clamp(17px, 1.6vw, 21px); line-height: 1.55; color: rgba(255,255,255,.86); max-width: 38ch; margin-top: 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+
+    /* Szakaszok: címke balra, tartalom jobbra */
+    .section { padding: clamp(72px, 11vw, 140px) 0; scroll-margin-top: 72px; }
+    .split { display: grid; grid-template-columns: minmax(180px, 3fr) 9fr; gap: 40px; }
+    .label { font-family: "Jost", "Futura PT", Futura, sans-serif; font-weight: 500; font-size: 18px; color: var(--gray); padding-top: 8px; }
+    .label::before { content: ""; display: block; width: 28px; height: 4px; background: var(--blue); margin-bottom: 14px; }
+
+    /* Tevékenység */
+    .services { border-top: 1px solid var(--line); }
+    .service { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: 40px; padding: 44px 0; border-bottom: 1px solid var(--line); }
+    .service h3 { font-size: clamp(24px, 2.5vw, 32px); font-weight: 700; hyphens: manual; overflow-wrap: break-word; }
+    .service p { color: #3d3d3d; max-width: 52ch; }
+    .service .more { display: inline-block; margin-top: 16px; font-weight: 600; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+
+    /* Rólunk */
+    .about { background: var(--mist); }
+    .statement { font-size: clamp(24px, 3.1vw, 40px); font-weight: 600; line-height: 1.3; letter-spacing: -.02em; max-width: 30ch; }
+    .about-sub { margin-top: 28px; color: var(--gray); max-width: 52ch; font-size: 18px; }
+
+    /* PODD – a fotó teljes szélességben */
+    .podd {
+      position: relative; isolation: isolate; color: #fff; overflow: hidden;
+      background: var(--petrol) url("images/podd-bg.jpg") 80% 55% / cover no-repeat;
+    }
+    .podd::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgba(1,67,71,.98) 0%, rgba(1,67,71,.95) 56%, rgba(1,67,71,.6) 76%, rgba(1,67,71,.12) 100%);
+    }
+    .podd .label { color: rgba(255,255,255,.7); }
+    .podd .label::before { background: #9fd3d0; }
+    .podd-body { max-width: 560px; }
+    .podd-logo { display: block; height: 54px; width: auto; margin-bottom: 30px; }
+    .podd h2 { font-size: clamp(32px, 4.4vw, 54px); font-weight: 700; }
+    .podd-text { margin-top: 22px; color: rgba(255,255,255,.86); }
+    .podd-list { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 12px; }
+    .podd-list li { padding-left: 30px; position: relative; color: #e6f2f1; }
+    .podd-list li::before {
+      content: ""; position: absolute; left: 2px; top: 8px; width: 13px; height: 7px;
+      border-left: 2px solid #9fd3d0; border-bottom: 2px solid #9fd3d0; transform: rotate(-45deg);
+    }
+    .podd .btn { margin-top: 36px; color: var(--petrol); }
+
+    /* Partnerek – vonalas rács, nem kártyák */
+    .partners-head h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 700; }
+    .partners-head p { margin-top: 14px; color: var(--gray); }
+    .partners { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-top: 40px; }
+    .partner { height: 150px; display: grid; place-items: center; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px; }
+    .partner img { display: block; max-width: 70%; max-height: 42px; width: auto; height: auto; }
+    .partner img.tall { max-height: 50px; }
+    .partner img.etb { max-height: 60px; }
+
+    /* Kapcsolat */
+    .contact-wrap { border-top: 1px solid var(--line); padding-top: clamp(72px, 11vw, 140px); }
+    #kapcsolat { padding-top: 0; }
+    .contact-head h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 700; }
+    .contact-head p { margin-top: 14px; color: var(--gray); }
+    .big-mail {
+      display: inline-block; margin-top: 32px; font-size: clamp(22px, 2.6vw, 32px); font-weight: 700;
+      letter-spacing: -.015em; color: var(--blue); text-decoration: none; line-height: 1.2;
+      border-bottom: 2px solid currentColor; padding-bottom: 3px; word-break: break-word;
+    }
+    .big-mail:hover { color: var(--blue-hover); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--line); }
+    .contact-grid h3 { font-size: 15px; font-weight: 600; color: var(--gray); letter-spacing: 0; margin-bottom: 14px; }
+    .contact-list { margin: 0; display: grid; gap: 18px; align-content: start; }
+    .contact-list dt { font-size: 14px; color: var(--gray); }
+    .contact-list dd { margin: 2px 0 0; font-size: 19px; font-weight: 600; }
+    .contact-list a { color: var(--ink); text-decoration: none; }
+    .contact-list a:hover { color: var(--blue); }
+    .company { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .company td { padding: 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .company td:first-child { color: var(--gray); width: 46%; padding-right: 12px; }
+    .company tr:last-child td { border-bottom: 0; }
+
+    /* „Hamarosan” matrica a PODD részeknél */
+    .sticker {
+      display: inline-block; vertical-align: middle; transform: rotate(-6deg);
+      background: #9fd3d0; color: var(--petrol); font: 800 13px/1 "Montserrat", sans-serif;
+      letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px 7px; border-radius: 6px;
+      border: 2px solid #fff; box-shadow: 0 6px 16px rgba(1,67,71,.28); white-space: nowrap;
+    }
+    .service .sticker { margin: 10px 0 0 8px; }
+    .more-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
+    .more-row .more { margin-top: 0; }
+    .more-row .sticker { margin: 0; }
+    .podd-brand { display: flex; align-items: center; gap: 18px; margin-bottom: 30px; }
+    .podd-brand .podd-logo { margin-bottom: 0; }
+    .podd-brand .sticker { font-size: 15px; padding: 10px 14px 9px; }
+
+    /* Rólunk – két hasábos kiegészítés */
+    .about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; margin-top: 40px; max-width: 900px; }
+    .about-cols p { color: #3d3d3d; }
+
+    /* Szolgáltatások bevezető */
+    .services-head h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 700; }
+    .services-head p { margin-top: 18px; color: #3d3d3d; max-width: 62ch; }
+    .services-head .note { margin-top: 18px; font-weight: 600; color: var(--blue-deep); max-width: 62ch; }
+    .services-head + .services { margin-top: 48px; }
+
+    /* PODD – kiegészítő bekezdés */
+    .podd-text + .podd-text { margin-top: 14px; }
+    .podd-goal { margin-top: 26px; font-size: 15px; color: rgba(255,255,255,.7); max-width: 52ch; }
+
+    /* Miért mi */
+    .why { background: var(--mist); }
+    .why-head h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 700; }
+    .why-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; margin-top: 40px; }
+    .why-item { padding: 26px 0; border-top: 2px solid var(--blue); }
+    .why-item h3 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+    .why-item p { margin-top: 10px; color: #3d3d3d; font-size: 16px; }
+
+    /* Küldetés sáv */
+    .mission { position: relative; isolation: isolate; overflow: hidden; color: #fff;
+      background: radial-gradient(120% 120% at 15% 0%, #5a74c0 0%, var(--blue) 40%, #2e4385 100%); }
+    .mission .hero-pattern { z-index: -1; }
+    .mission .label { color: rgba(255,255,255,.75); }
+    .mission .label::before { background: #fff; }
+    .mission-statement { font-size: clamp(26px, 3.4vw, 44px); font-weight: 700; line-height: 1.22; letter-spacing: -.02em; max-width: 28ch; }
+    .mission-sub { margin-top: 24px; color: rgba(255,255,255,.85); max-width: 56ch; font-size: 18px; }
+    .motto { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 40px 0 0; padding: 0; list-style: none;
+      font-family: "Jost", "Futura PT", Futura, sans-serif; font-weight: 500; font-size: clamp(18px, 2vw, 24px); }
+    .motto li { display: flex; align-items: center; gap: 12px; }
+    .motto li::before { content: ""; width: 10px; height: 10px; background: #fff; transform: rotate(45deg); }
+
+    footer { border-bottom: 10px solid var(--blue); background: var(--mist); }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 30px; padding-bottom: 30px; font-size: 14px; color: var(--gray); }
+    footer img { display: block; height: 26px; width: auto; }
+    footer a { color: var(--ink); text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .split { grid-template-columns: 1fr; gap: 28px; }
+      .service { grid-template-columns: 1fr; gap: 14px; padding: 34px 0; }
+      .contact-grid, .about-cols, .why-list { grid-template-columns: 1fr; }
+      .partners { grid-template-columns: repeat(2, 1fr); }
+      .partner { height: 120px; }
+      .menu-btn { display: block; }
+      #menu {
+        display: none; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; gap: 0;
+        background: #fff; border-bottom: 1px solid var(--line); padding: 8px var(--gutter) 18px;
+      }
+      #menu.open { display: flex; }
+      #menu a { display: block; padding: 13px 0; font-size: 17px; }
+      .nav-right { gap: 10px; }
+      .hero { min-height: 92vh; }
+      .hero-mark { height: 46%; right: -30vw; bottom: auto; top: 3%; opacity: .7; }
+      .podd::before { background: linear-gradient(180deg, rgba(1,67,71,.86) 0%, rgba(1,67,71,.95) 55%, rgba(1,67,71,.98) 100%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-mark .tie, .hero-mark .stroke { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo" data-i18n-aria="logoAria" aria-label="Workflow Hungary – kezdőlap">
+      <img src="images/workflow-logo.png" alt="Workflow" width="386" height="96">
+    </a>
+    <div class="nav-right">
+      <ul id="menu">
+        <li><a href="#rolunk" data-i18n="navAbout">Rólunk</a></li>
+        <li><a href="#tevekenyseg" data-i18n="navWhat">Szolgáltatások</a></li>
+        <li><a href="#podd">PODD</a></li>
+        <li><a href="#miert" data-i18n="navWhy">Miért mi?</a></li>
+        <li><a href="#partnerek" data-i18n="navPartners">Partnereink</a></li>
+        <li><a href="#kapcsolat" data-i18n="navContact">Kapcsolat</a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="Nyelv / Language">
+        <button type="button" data-lang="hu" aria-pressed="true" title="Magyar">HU</button>
+        <button type="button" data-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+      <button class="menu-btn" data-i18n-aria="menuAria" aria-label="Menü" aria-expanded="false" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-pattern" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="wfPattern" width="150" height="259.8" patternUnits="userSpaceOnUse">
+        <g fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="1"><circle cx="0.0" cy="0.0" r="150"/><circle cx="150.0" cy="0.0" r="150"/><circle cx="75.0" cy="129.9" r="150"/><circle cx="0.0" cy="259.8" r="150"/><circle cx="150.0" cy="259.8" r="150"/><circle cx="-75.0" cy="129.9" r="150"/><circle cx="225.0" cy="129.9" r="150"/><circle cx="75.0" cy="-129.9" r="150"/><circle cx="75.0" cy="389.7" r="150"/><path d="M0 0H150 M0 129.9H150 M0 259.8H150 M-150.0 259.8L0.0 0 M-150.0 0L0.0 259.8 M0.0 259.8L150.0 0 M0.0 0L150.0 259.8 M150.0 259.8L300.0 0 M150.0 0L300.0 259.8 "/></g>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#wfPattern)"/>
+    </svg>
+    <!-- A Workflow logó W + nyakkendő formája, nagyban -->
+    <svg class="hero-mark" viewBox="600 630 300 280" aria-hidden="true">
+      <polygon class="stroke" points="615,646 665,646 714,775 680,823" fill="#fff" fill-opacity=".14"/>
+      <polygon class="stroke" points="835,646 885,646 820,823 786,775" fill="#fff" fill-opacity=".14"/>
+      <polygon class="tie" points="720,682 780,682 764,724 787,862 750,896 713,862 736,724" fill="#000" fill-opacity=".82"/>
+    </svg>
+    <div class="wrap hero-inner">
+      <p class="hero-kicker">Workflow Hungary Kft.</p>
+      <h1 data-i18n="heroTitle">Megbízható partner 2022&nbsp;óta.</h1>
+      <p class="hero-lead" data-i18n="heroLead">Nemzetközi ételfutár- és mikromobilitási platformok napi működtetése Magyarországon – emellett pedig saját PODD márkánk építése.</p>
+      <div class="hero-actions">
+        <a href="#kapcsolat" class="btn btn-light" data-i18n="heroCta">Kapcsolatfelvétel</a>
+        <a href="#tevekenyseg" class="btn btn-outline" data-i18n="heroCta2">Mivel foglalkozunk?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÓLUNK -->
+  <section id="rolunk" class="section about">
+    <div class="wrap split">
+      <p class="label" data-i18n="aboutEyebrow">Rólunk</p>
+      <div>
+        <p class="statement" data-i18n="aboutP1">Magyar tulajdonú, budapesti vállalkozás vagyunk. 2022 óta nyújtunk operációs és logisztikai szolgáltatásokat nemzetközi vállalatoknak Magyarországon.</p>
+        <p class="about-sub" data-i18n="aboutP2">Munkánk középpontjában a hatékony működés, a megbízható partnerség és a folyamatos fejlődés áll. Hiszünk abban, hogy a jó együttműködés alapja a pontos teljesítés, az átlátható kommunikáció és a gyors alkalmazkodás.</p>
+        <div class="about-cols">
+          <p data-i18n="aboutP3">Az elmúlt években jelentős tapasztalatot szereztünk a mikromobilitás, az ételkiszállítás és a városi logisztika területén. Nemzetközi platformok operációs partnereként megtanultuk, hogyan lehet összetett, folyamatos működést igénylő szolgáltatásokat hatékonyan megszervezni, koordinálni és fejleszteni.</p>
+          <p data-i18n="aboutP4">Nem csupán szolgáltatóként, hanem hosszú távú üzleti partnerként tekintünk magunkra. Célunk, hogy valódi értéket teremtsünk, csökkentsük partnereink operációs terheit, és hozzájáruljunk üzleti céljaik megvalósításához.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SZOLGÁLTATÁSOK -->
+  <section id="tevekenyseg" class="section">
+    <div class="wrap split">
+      <p class="label" data-i18n="whatEyebrow">Szolgáltatásaink</p>
+      <div>
+        <div class="services-head">
+          <h2 data-i18n="whatTitle">Tapasztalat nemzetközi környezetben</h2>
+          <p data-i18n="whatIntro">2022 óta több nemzetközi ételfutár- és mikromobilitási platform működésében veszünk részt Magyarországon. Feladataink a napi operáció megszervezésétől és a terepi csapatok koordinálásától a járműflották kezelésén és a logisztikai folyamatokon át a teljesítményellenőrzésig terjednek.</p>
+          <p class="note" data-i18n="whatNote">Rugalmasan alkalmazkodunk partnereink működéséhez – legyen szó folyamatos napi üzemeltetésről, új szolgáltatás elindításáról, kapacitásbővítésről vagy egyedi operációs feladatokról.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <h3 data-i18n="s1Title">Mikromobilitási operáció</h3>
+            <p data-i18n="s1Text">Elektromos rollerek és egyéb megosztott mobilitási eszközök üzemeltetésének támogatása: flottakezelés, járműáthelyezés, terepi ellenőrzések, karbantartási és logisztikai feladatok koordinálása.</p>
+          </article>
+          <article class="service">
+            <h3 data-i18n="s2Title">Városi logisztika és ételkiszállítás</h3>
+            <p data-i18n="s2Text">Nemzetközi kiszállítási platformok működésének operatív támogatása, munkaerő- és kapacitásszervezés, a napi feladatok koordinálása és a szolgáltatási színvonal fenntartása.</p>
+          </article>
+          <article class="service">
+            <h3 data-i18n="s3Title">Operáció&shy;menedzsment</h3>
+            <p data-i18n="s3Text">Összetett működési folyamatok megtervezése, szervezése és ellenőrzése. Csapatok irányítása, teljesítménykövetés, munkafolyamatok optimalizálása és hatékony erőforrás-gazdálkodás.</p>
+          </article>
+          <article class="service">
+            <h3 data-i18n="s4Title">Új üzleti koncepciók fejlesztése</h3>
+            <div>
+              <p data-i18n="s4Text">Operációs tapasztalatunkat saját projektekben is hasznosítjuk. A tervezéstől a technológiai megoldásokon át a mindennapi üzemeltetésig olyan üzleti modelleket építünk, amelyek hosszú távon is fenntarthatóan működnek.</p>
+              <p class="more-row"><a class="more" href="#podd" data-i18n="more">Ilyen a PODD is</a> <span class="sticker" data-i18n="soon">Hamarosan</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PODD -->
+  <section id="podd" class="section podd">
+    <div class="wrap split">
+      <p class="label" data-i18n="poddEyebrow">Saját márkánk</p>
+      <div class="podd-body">
+        <div class="podd-brand">
+          <a href="https://podd.fit" target="_blank" rel="noopener" aria-label="podd.fit"><img class="podd-logo" src="images/podd-logo-white.svg" alt="PODD" width="734" height="276"></a>
+          <span class="sticker" data-i18n="soon">Hamarosan</span>
+        </div>
+        <h2 data-i18n="poddTitle">Saját márkánk, saját jövőképünk</h2>
+        <p class="podd-text" data-i18n="poddText">A nemzetközi operációs munkában megszerzett tudásunkra építve hoztuk létre a PODD-ot: privát, önkiszolgáló edzőtermeket, amelyek a modern technológiát, a kényelmet és a személyre szabott edzésélményt ötvözik.</p>
+        <p class="podd-text" data-i18n="poddText2">Az edzőtermek digitálisan foglalhatók és önállóan használhatók – 30 perctől akár 3 óráig, legfeljebb két baráttal, zavartalanul.</p>
+        <ul class="podd-list">
+          <li data-i18n="poddF1">Prémium hangrendszer, amihez csatlakozhatsz</li>
+          <li data-i18n="poddF2">Személyre szabható fények és hőmérséklet</li>
+          <li data-i18n="poddF3">Edzésvideók az appban</li>
+          <li data-i18n="poddF4">Nyitva 0–24 órában</li>
+        </ul>
+        <p class="podd-goal" data-i18n="poddGoal">Hosszú távú célunk, hogy a PODD márkát Magyarországon és nemzetközi piacokon is továbbfejlesszük.</p>
+        <a href="https://podd.fit" target="_blank" rel="noopener" class="btn btn-light" data-i18n="poddCta">Tovább a podd.fit oldalra</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MIÉRT MI -->
+  <section id="miert" class="section why">
+    <div class="wrap split">
+      <p class="label" data-i18n="whyEyebrow">Miért mi?</p>
+      <div>
+        <div class="why-head"><h2 data-i18n="whyTitle">Miért a Workflow Hungary?</h2></div>
+        <div class="why-list">
+          <div class="why-item">
+            <h3 data-i18n="w1Title">Magyar tulajdon, személyes kapcsolattartás</h3>
+            <p data-i18n="w1Text">Budapesti vállalkozásként közvetlen kapcsolatot tartunk partnereinkkel. Nálunk a gyors kommunikáció és a személyes felelősségvállalás a mindennapi működés része.</p>
+          </div>
+          <div class="why-item">
+            <h3 data-i18n="w2Title">Nemzetközi tapasztalat, helyi piacismeret</h3>
+            <p data-i18n="w2Text">Ismerjük a nemzetközi vállalatok elvárásait, és pontosan értjük a magyar piac sajátosságait és működési kihívásait.</p>
+          </div>
+          <div class="why-item">
+            <h3 data-i18n="w3Title">Rugalmas és hatékony működés</h3>
+            <p data-i18n="w3Text">Nem sablonmegoldásokban gondolkodunk. Szolgáltatásainkat partnereink igényeihez igazítjuk, és a gyakorlati eredményekre koncentrálunk.</p>
+          </div>
+          <div class="why-item">
+            <h3 data-i18n="w4Title">Átlátható együttműködés</h3>
+            <p data-i18n="w4Text">Egyértelmű árazás, pontos elszámolás, betartott határidők és kiszámítható üzleti kapcsolat.</p>
+          </div>
+          <div class="why-item">
+            <h3 data-i18n="w5Title">Fejlődés és innováció</h3>
+            <p data-i18n="w5Text">Folyamatosan keressük azokat a technológiai és szervezési lehetőségeket, amelyekkel hatékonyabbá tehetjük saját és partnereink működését.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNEREK -->
+  <section id="partnerek" class="section">
+    <div class="wrap split">
+      <p class="label" data-i18n="partnersEyebrow">Partnereink</p>
+      <div>
+        <div class="partners-head">
+          <h2 data-i18n="partnersTitle">Akikkel együtt dolgozunk</h2>
+          <p data-i18n="partnersIntro">Büszkék vagyunk partnereink bizalmára.</p>
+        </div>
+        <!-- Új logó: tedd a képet az images/ mappába, és másold le az egyik sort -->
+        <div class="partners">
+          <div class="partner"><img class="tall" src="images/wolt.png" alt="Wolt" width="423" height="160" loading="lazy"></div>
+          <div class="partner"><img src="images/boltfood.png" alt="Bolt Food" width="480" height="119" loading="lazy"></div>
+          <div class="partner"><img class="tall" src="images/dott.png" alt="Dott" width="447" height="160" loading="lazy"></div>
+          <div class="partner"><img src="images/tier.png" alt="TIER" width="480" height="93" loading="lazy"></div>
+          <div class="partner"><img src="images/duvenbeck.png" alt="Duvenbeck" width="480" height="69" loading="lazy"></div>
+          <div class="partner"><img class="etb" src="images/etb-freight.png" alt="ETB Freight" width="317" height="160" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KÜLDETÉS -->
+  <section class="section mission" aria-labelledby="missionTitle">
+    <svg class="hero-pattern" aria-hidden="true"><rect width="100%" height="100%" fill="url(#wfPattern)"/></svg>
+    <div class="wrap split">
+      <p class="label" data-i18n="missionEyebrow">Küldetésünk</p>
+      <div>
+        <p class="mission-statement" id="missionTitle" data-i18n="missionText">Megbízható operációs hátteret biztosítunk partnereinknek, miközben saját megoldásainkkal új értéket teremtünk a piacon.</p>
+        <p class="mission-sub" data-i18n="missionSub">Számunkra a siker nem csupán a feladatok teljesítését jelenti, hanem a hosszú távú, kölcsönös bizalomra épülő együttműködéseket is.</p>
+        <ul class="motto">
+          <li data-i18n="m1">Megbízható működés</li>
+          <li data-i18n="m2">Nemzetközi tapasztalat</li>
+          <li data-i18n="m3">Innovatív gondolkodás</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- KAPCSOLAT -->
+  <section id="kapcsolat" class="section">
+    <div class="wrap">
+      <div class="split contact-wrap">
+        <p class="label" data-i18n="contactEyebrow">Kapcsolat</p>
+        <div>
+          <div class="contact-head">
+            <h2 data-i18n="contactTitle">Beszéljünk!</h2>
+            <p data-i18n="contactIntro">Keressen minket bizalommal, rövid időn belül válaszolunk.</p>
+          </div>
+          <a class="big-mail" href="mailto:hello@wfhungary.hu?subject=%C3%89rdekl%C5%91d%C3%A9s" data-i18n-href="mailHref">hello@wfhungary.hu</a>
+          <div class="contact-grid">
+            <dl class="contact-list">
+              <div><dt data-i18n="phone">Telefon</dt><dd><a href="tel:+36706249342">+36 70 624 9342</a></dd></div>
+              <div><dt data-i18n="address">Cím</dt><dd>1106 Budapest, Keresztúri út 86/C</dd></div>
+            </dl>
+            <div>
+              <h3 data-i18n="companyTitle">Cégadatok</h3>
+              <table class="company">
+                <tr><td data-i18n="cName">Cégnév</td><td>Workflow Hungary Kft.</td></tr>
+                <tr><td data-i18n="cSeat">Székhely</td><td>1106 Budapest, Keresztúri út 86/C</td></tr>
+                <tr><td data-i18n="cReg">Cégjegyzékszám</td><td>01-09-428749</td></tr>
+                <tr><td data-i18n="cTax">Adószám</td><td>32149630-2-42</td></tr>
+                <tr><td data-i18n="cRep">Képviselő</td><td>Dibusz Markó</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="images/workflow-wordmark.png" alt="Workflow" width="557" height="96" loading="lazy">
+    <span>© <span id="year">2026</span> Workflow Hungary Kft. <span data-i18n="rights">Minden jog fenntartva.</span></span>
+    <a href="mailto:hello@wfhungary.hu">hello@wfhungary.hu</a>
+  </div>
+</footer>
+
+<script>
+  /* Angol szövegek – a magyar az alapértelmezett, az a HTML-ben van */
+  var EN = {
+    navWhat: 'Services', navAbout: 'About us', navWhy: 'Why us?', navPartners: 'Partners', navContact: 'Contact',
+    heroTitle: 'A reliable partner since&nbsp;2022.',
+    heroLead: 'We run day-to-day operations for international food delivery and micromobility platforms in Hungary – and alongside that, we are building our own brand, PODD.',
+    heroCta: 'Get in touch', heroCta2: 'What do we do?',
+    aboutEyebrow: 'About us',
+    aboutP1: 'We are a Hungarian-owned company based in Budapest. Since 2022, we have provided operations and logistics services to international companies in Hungary.',
+    aboutP2: 'Our work centres on efficient operations, reliable partnership and continuous improvement. We believe good collaboration rests on precise delivery, transparent communication and quick adaptation.',
+    aboutP3: 'Over the past years we have gained substantial experience in micromobility, food delivery and urban logistics. As an operations partner for international platforms, we have learned how to organise, coordinate and develop complex services that never stop running.',
+    aboutP4: 'We see ourselves not just as a service provider but as a long-term business partner. Our aim is to create real value, reduce our partners’ operational load and help them reach their business goals.',
+    whatEyebrow: 'Our services', whatTitle: 'Experience in an international environment',
+    whatIntro: 'Since 2022, we have been part of running several international food delivery and micromobility platforms in Hungary. Our work ranges from organising daily operations and coordinating field teams to fleet management, logistics and performance monitoring.',
+    whatNote: 'We adapt to the way our partners work – whether it’s continuous daily operations, launching a new service, scaling capacity or one-off operational projects.',
+    s1Title: 'Micromobility operations',
+    s1Text: 'Supporting the operation of e-scooters and other shared mobility vehicles: fleet management, vehicle rebalancing, field inspections, and coordination of maintenance and logistics.',
+    s2Title: 'Urban logistics and food delivery',
+    s2Text: 'Operational support for international delivery platforms: workforce and capacity planning, coordination of daily tasks and maintaining service quality.',
+    s3Title: 'Operations management',
+    s3Text: 'Designing, organising and monitoring complex operational processes. Leading teams, tracking performance, optimising workflows and managing resources efficiently.',
+    s4Title: 'Developing new business concepts',
+    s4Text: 'We also put our operations experience into our own projects. From planning and technology to day-to-day running, we build business models designed to work sustainably in the long run.',
+    more: 'PODD is one of them', soon: 'Coming soon',
+    poddEyebrow: 'Our own brand', poddTitle: 'Our own brand, our own vision',
+    poddText: 'Building on what we learned in international operations, we created PODD: private, self-service gyms that combine modern technology, convenience and a personalised training experience.',
+    poddText2: 'The gyms are booked digitally and used independently – from 30 minutes up to 3 hours, with up to two friends, undisturbed.',
+    poddF1: 'Premium sound system you can connect to', poddF2: 'Personalised lights and temperature',
+    poddF3: 'Training videos in the app', poddF4: 'Open 24/7',
+    poddGoal: 'Our long-term goal is to grow the PODD brand in Hungary and on international markets.',
+    poddCta: 'Go to podd.fit',
+    whyEyebrow: 'Why us?', whyTitle: 'Why Workflow Hungary?',
+    w1Title: 'Hungarian-owned, personal contact',
+    w1Text: 'As a Budapest-based company, we keep direct contact with our partners. Fast communication and personal responsibility are part of how we work every day.',
+    w2Title: 'International experience, local market knowledge',
+    w2Text: 'We know what international companies expect, and we understand the specifics and operational challenges of the Hungarian market.',
+    w3Title: 'Flexible and efficient',
+    w3Text: 'We don’t think in templates. We tailor our services to our partners’ needs and focus on practical results.',
+    w4Title: 'Transparent collaboration',
+    w4Text: 'Clear pricing, accurate invoicing, deadlines kept and a predictable business relationship.',
+    w5Title: 'Growth and innovation',
+    w5Text: 'We keep looking for technological and organisational opportunities to make our own and our partners’ operations more efficient.',
+    partnersEyebrow: 'Partners', partnersTitle: 'Who we work with',
+    partnersIntro: 'We are proud of the trust our partners have placed in us.',
+    missionEyebrow: 'Our mission',
+    missionText: 'We provide reliable operational support for our partners, while creating new value on the market with our own solutions.',
+    missionSub: 'For us, success means more than getting the job done – it means long-term partnerships built on mutual trust.',
+    m1: 'Reliable operations', m2: 'International experience', m3: 'Innovative thinking',
+    contactEyebrow: 'Contact', contactTitle: 'Let’s talk!',
+    contactIntro: 'Get in touch with us – we will get back to you shortly.',
+    phone: 'Phone', address: 'Address',
+    mailHref: 'mailto:hello@wfhungary.hu?subject=Enquiry',
+    companyTitle: 'Company details', cName: 'Company name', cSeat: 'Registered office',
+    cReg: 'Company reg. no.', cTax: 'Tax number', cRep: 'Representative',
+    rights: 'All rights reserved.',
+    logoAria: 'Workflow Hungary – home', menuAria: 'Menu',
+    metaDesc: 'Workflow Hungary Kft. – a Hungarian-owned operations partner since 2022: micromobility, food delivery, urban logistics, and our own brand, PODD.'
+  };
+
+  var HU = {};
+  function swap(sel, attr, lang) {
+    document.querySelectorAll('[' + sel + ']').forEach(function (el) {
+      var k = el.getAttribute(sel);
+      if (!(k in HU)) HU[k] = attr ? el.getAttribute(attr) : el.innerHTML;
+      var v = lang === 'en' ? EN[k] : HU[k];
+      if (attr) el.setAttribute(attr, v); else el.innerHTML = v;
+    });
+  }
+  function setLang(lang) {
+    if (lang !== 'en') lang = 'hu';
+    swap('data-i18n', null, lang);
+    swap('data-i18n-aria', 'aria-label', lang);
+    swap('data-i18n-href', 'href', lang);
+    var md = document.getElementById('metaDesc');
+    if (!('metaDesc' in HU)) HU.metaDesc = md.getAttribute('content');
+    md.setAttribute('content', lang === 'en' ? EN.metaDesc : HU.metaDesc);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('wf-lang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+  });
+  /* Kezdő nyelv: ?lang=en a címben, különben a legutóbbi választás, különben magyar */
+  var start = (new URLSearchParams(location.search).get('lang') || '').toLowerCase();
+  if (!start) { try { start = localStorage.getItem('wf-lang') || ''; } catch (e) {} }
+  if (start === 'en') setLang('en');
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  btn.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+</script>
+</body>
+</html>
