@@ -10,10 +10,10 @@
   <meta property="og:description" content="Operációs partner és a PODD privát edzőtermek.">
   <meta property="og:url" content="https://wfhungary.hu/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://wfhungary.hu/images/workflow-logo.png">
+  <meta property="og:image" content="https://wfhungary.hu/workflow-logo.png">
   <meta name="theme-color" content="#4660AB">
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Arculat: Montserrat + Futura PT; a Futura PT nem ingyenes webfont, helyette a hozzá nagyon hasonló Jost -->
@@ -125,7 +125,7 @@
     /* PODD – a fotó teljes szélességben */
     .podd {
       position: relative; isolation: isolate; color: #fff; overflow: hidden;
-      background: var(--petrol) url("images/podd-bg.jpg") 80% 55% / cover no-repeat;
+      background: var(--petrol) url("podd-bg.jpg") 80% 55% / cover no-repeat;
     }
     .podd::before {
       content: ""; position: absolute; inset: 0; z-index: -1;
@@ -261,7 +261,7 @@
 <header>
   <div class="wrap nav">
     <a href="#" class="logo" data-i18n-aria="logoAria" aria-label="Workflow Hungary – kezdőlap">
-      <img src="images/workflow-logo.png" alt="Workflow" width="386" height="96">
+      <img src="workflow-logo.png" alt="Workflow" width="386" height="96">
     </a>
     <div class="nav-right">
       <ul id="menu">
@@ -363,7 +363,7 @@
       <p class="label" data-i18n="poddEyebrow">Saját márkánk</p>
       <div class="podd-body">
         <div class="podd-brand">
-          <a href="https://podd.fit" target="_blank" rel="noopener" aria-label="podd.fit"><img class="podd-logo" src="images/podd-logo-white.svg" alt="PODD" width="734" height="276"></a>
+          <a href="https://podd.fit" target="_blank" rel="noopener" aria-label="podd.fit"><img class="podd-logo" src="podd-logo-white.svg" alt="PODD" width="734" height="276"></a>
           <span class="sticker" data-i18n="soon">Hamarosan</span>
         </div>
         <h2 data-i18n="poddTitle">Saját márkánk, saját jövőképünk</h2>
@@ -422,14 +422,14 @@
           <h2 data-i18n="partnersTitle">Akikkel együtt dolgozunk</h2>
           <p data-i18n="partnersIntro">Büszkék vagyunk partnereink bizalmára.</p>
         </div>
-        <!-- Új logó: tedd a képet az images/ mappába, és másold le az egyik sort -->
+        <!-- Új logó: töltsd fel a képet a repóba, és másold le az egyik sort -->
         <div class="partners">
-          <div class="partner"><img class="tall" src="images/wolt.png" alt="Wolt" width="423" height="160" loading="lazy"></div>
-          <div class="partner"><img src="images/boltfood.png" alt="Bolt Food" width="480" height="119" loading="lazy"></div>
-          <div class="partner"><img class="tall" src="images/dott.png" alt="Dott" width="447" height="160" loading="lazy"></div>
-          <div class="partner"><img src="images/tier.png" alt="TIER" width="480" height="93" loading="lazy"></div>
-          <div class="partner"><img src="images/duvenbeck.png" alt="Duvenbeck" width="480" height="69" loading="lazy"></div>
-          <div class="partner"><img class="etb" src="images/etb-freight.png" alt="ETB Freight" width="317" height="160" loading="lazy"></div>
+          <div class="partner"><img class="tall" src="wolt.png" alt="Wolt" width="423" height="160" loading="lazy"></div>
+          <div class="partner"><img src="boltfood.png" alt="Bolt Food" width="480" height="119" loading="lazy"></div>
+          <div class="partner"><img class="tall" src="dott.png" alt="Dott" width="447" height="160" loading="lazy"></div>
+          <div class="partner"><img src="tier.png" alt="TIER" width="480" height="93" loading="lazy"></div>
+          <div class="partner"><img src="duvenbeck.png" alt="Duvenbeck" width="480" height="69" loading="lazy"></div>
+          <div class="partner"><img class="etb" src="etb-freight.png" alt="ETB Freight" width="317" height="160" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -465,7 +465,6 @@
           <a class="big-mail" href="mailto:hello@wfhungary.hu?subject=%C3%89rdekl%C5%91d%C3%A9s" data-i18n-href="mailHref">hello@wfhungary.hu</a>
           <div class="contact-grid">
             <dl class="contact-list">
-              <div><dt data-i18n="phone">Telefon</dt><dd><a href="tel:+36706249342">+36 70 624 9342</a></dd></div>
               <div><dt data-i18n="address">Cím</dt><dd>1106 Budapest, Keresztúri út 86/C</dd></div>
             </dl>
             <div>
@@ -487,7 +486,7 @@
 
 <footer>
   <div class="wrap">
-    <img src="images/workflow-wordmark.png" alt="Workflow" width="557" height="96" loading="lazy">
+    <img src="workflow-wordmark.png" alt="Workflow" width="557" height="96" loading="lazy">
     <span>© <span id="year">2026</span> Workflow Hungary Kft. <span data-i18n="rights">Minden jog fenntartva.</span></span>
     <a href="mailto:hello@wfhungary.hu">hello@wfhungary.hu</a>
   </div>
@@ -543,7 +542,7 @@
     m1: 'Reliable operations', m2: 'International experience', m3: 'Innovative thinking',
     contactEyebrow: 'Contact', contactTitle: 'Let’s talk!',
     contactIntro: 'Get in touch with us – we will get back to you shortly.',
-    phone: 'Phone', address: 'Address',
+    address: 'Address',
     mailHref: 'mailto:hello@wfhungary.hu?subject=Enquiry',
     companyTitle: 'Company details', cName: 'Company name', cSeat: 'Registered office',
     cReg: 'Company reg. no.', cTax: 'Tax number', cRep: 'Representative',
